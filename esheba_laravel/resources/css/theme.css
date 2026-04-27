@@ -1,0 +1,500 @@
+/* ======================================
+   E-SHEBA THEME - Global Color & Style
+   ====================================== */
+
+/* Color Variables */
+:root {
+  --primary-cyan: #00D9FF;
+  --primary-blue: #0080FF;
+  --primary-purple: #6B5BFF;
+  --secondary-indigo: #667eea;
+  --secondary-dark: #005883;
+  --dark-text: #333;
+  --gray-text: #555;
+  --light-gray: #666;
+  --light-bg: #f8f9ff;
+  --white: #fff;
+  --light-shadow: rgba(0, 128, 255, 0.1);
+  --medium-shadow: rgba(0, 128, 255, 0.2);
+  --strong-shadow: rgba(0, 128, 255, 0.4);
+}
+
+/* ======================================
+   Global Styles
+   ====================================== */
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ======================================
+   Hero Section Styles
+   ====================================== */
+
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-blue) 50%, var(--primary-purple) 100%);
+  color: white;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  bottom: -50px;
+  left: -100px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ======================================
+   Service Card Styles
+   ====================================== */
+
+.service-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 5px 20px var(--light-shadow);
+  height: 100%;
+  margin-bottom: 30px;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), var(--primary-purple), transparent);
+  transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px var(--medium-shadow);
+  border-color: var(--primary-cyan);
+}
+
+.service-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--primary-blue);
+  transition: all 0.4s ease;
+  animation: pulseIcon 2s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.service-card:hover .service-icon {
+  animation: none;
+  color: var(--primary-cyan);
+  transform: rotateZ(360deg);
+}
+
+/* ======================================
+   Pricing Card Styles
+   ====================================== */
+
+.pricing-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 128, 255, 0.12);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  height: 100%;
+  margin-bottom: 30px;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.pricing-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-cyan), var(--primary-blue), var(--primary-purple));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.pricing-card:hover::after {
+  transform: scaleX(1);
+}
+
+.pricing-card:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 30px 60px var(--medium-shadow);
+  border-color: var(--primary-cyan);
+}
+
+.pricing-header {
+  padding: 30px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 50%, var(--primary-cyan) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  animation: headerGradient 6s ease infinite;
+  background-size: 200% 200%;
+  display: flex;
+}
+
+@keyframes headerGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pricing-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.pricing-body {
+  padding: 30px;
+}
+
+.pricing-amount {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 15px 0;
+  animation: priceGlow 2s ease-in-out infinite;
+}
+
+@keyframes priceGlow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 10px var(--strong-shadow); }
+}
+
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.pricing-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+.pricing-list li:last-child {
+  border-bottom: none;
+}
+
+.pricing-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.pricing-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.pricing-button:hover {
+  color: white;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 15px 40px var(--strong-shadow);
+}
+
+/* ======================================
+   Features Section Styles
+   ====================================== */
+
+.features-section {
+  background: var(--light-bg);
+  padding: 60px 0;
+}
+
+.feature-item {
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.feature-icon {
+  font-size: 40px;
+  color: var(--primary-blue);
+  margin-bottom: 15px;
+  transition: all 0.4s ease;
+  display: inline-block;
+}
+
+.feature-item:hover .feature-icon {
+  color: var(--primary-cyan);
+  transform: translateY(-5px) scale(1.2);
+}
+
+/* ======================================
+   Section Typography Styles
+   ====================================== */
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dark-text);
+  text-align: center;
+}
+
+.section-subtitle {
+  color: var(--secondary-dark);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* ======================================
+   CTA Section Styles
+   ====================================== */
+
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-blue) 50%, var(--primary-purple) 100%);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: ctaGradient 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes ctaGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  animation: slideInDown 0.6s ease;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 40px;
+  background: white;
+  color: var(--primary-blue);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+.cta-button:hover {
+  color: var(--primary-blue);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ======================================
+   Statistics Styles
+   ====================================== */
+
+.stat-item {
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px);
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  animation: countUp 2s ease-in-out;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes countUp {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.stat-label {
+  color: var(--light-gray);
+  margin-top: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover .stat-label {
+  color: var(--primary-blue);
+}
+
+/* ======================================
+   Responsive Design
+   ====================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .cta-section h2 {
+    font-size: 24px;
+  }
+  
+  .pricing-amount {
+    font-size: 28px;
+  }
+
+  .service-card,
+  .pricing-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .cta-section h2 {
+    font-size: 20px;
+  }
+
+  .pricing-amount {
+    font-size: 24px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+}
