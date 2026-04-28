@@ -21,9 +21,6 @@ Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/terms-conditions', [FrontendController::class, 'termsConditions'])->name('terms');
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -57,4 +54,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('send-message/sms', [SendMessageController::class, 'sendSms'])->name('send-message.send-sms');
 });
 
-require __DIR__.'/auth.php';
+Route::prefix('admin')->group(function () {
+    require __DIR__.'/auth.php';
+});
